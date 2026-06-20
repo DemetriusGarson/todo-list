@@ -1,0 +1,41 @@
+#task-list {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap:20px;
+}
+
+.task-list-item {
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-start; */
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.overlay {
+    transform: translateX(-100%);
+    
+}
+
+.overlay.open{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    transform: translateX(0);
+    background-color: rgba(0,0,0, 0.5);
+    
+    
+}
