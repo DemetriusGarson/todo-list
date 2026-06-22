@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/todo-list/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
-    <script type="module" crossorigin src="/todo-list/assets/styles-CgLylo3T.js"></script>
+    <title>Document</title>
+    <script type="module" crossorigin src="/todo-list/time_dashboard.js"></script>
+    <link rel="modulepreload" crossorigin href="/todo-list/assets/styles-CgLylo3T.js">
     <link rel="stylesheet" crossorigin href="/todo-list/assets/styles-BU-2GDW7.css">
   </head>
   <body>
@@ -31,31 +31,36 @@
   </div>
 </header>
 
-
     <main>
-      <!-- Loads the specified .html file -->
-      <form class="task-form">
-  <input
-    class="task-name"
-    type="text"
-    name="taskName"
-    placeholder="enter task name"
-  />
-  <textarea
-    name="taskDescription"
-    placeholder="enter task description"
-  ></textarea>
-  <button type="submit">Add task</button>
-</form>
-
-      <ul id="task-list"></ul>
-<div class="overlay">
-  <button class="overlay-close-button" type="button">Close</button>
-  <div class="modal-window"></div>
+      <section>
+        <div class="container grid">
+          <div class="card">
+  <span class="clock"></span>
 </div>
 
-    </main>
+          <div class="card">
+  <button class="load-btn">Load Data</button>
+  <div class="loader is-hidden"></div>
+  <div class="output"></div>
+</div>
 
+          <div class="card">
+  <form class="birthday-form">
+    <input
+      class="birthday"
+      name="birthday"
+      type="text"
+      placeholder="Enter your Birthday"
+    />
+    <button type="sumbit">Submit</button>
+  </form>
+
+  <div class="birthday-output"></div>
+</div>
+
+        </div>
+      </section>
+    </main>
     <footer class="footer">
   <div class="container">
     <p class="footer-desc">
@@ -72,7 +77,5 @@
   </div>
 </footer>
 
-
-    <!-- <script type="module" src="./main.js"></script> -->
   </body>
 </html>
