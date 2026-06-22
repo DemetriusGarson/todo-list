@@ -2,23 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Document</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
-
     <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/task-form.html" />
-      <load src="./partials/task-list.html" />
+      <section>
+        <div class="container grid">
+          <load src="./partials/clock.html" />
+          <load src="./partials/load-data.html" />
+          <load src="./partials/birthday.html" />
+        </div>
+      </section>
     </main>
-
     <load src="./partials/footer.html" />
-
-    <!-- <script type="module" src="./main.js"></script> -->
-    <script type="module" src="./js/module_10.js"></script>
+    <script type="module" src="./js/time_dashboard.js"></script>
   </body>
 </html>
