@@ -54,3 +54,194 @@
 //     clearInterval(timerId);
 //   }
 // }, 1000);
+
+//! module 10_2
+//! TASK4
+// Створи Promise, який повертає число 10
+
+// const promise = new Promise((resolve, reject) => {
+//   resolve(10);
+// });
+// promise.then(result => console.log(result));
+
+//! TASK5
+// const promise = new Promise((resolve, reject) => {
+//   resolve('Hello');
+// });
+// promise.then(console.log);
+//! TASK6
+// const number = 10;
+// const promise = new Promise((resolve, reject) => {
+//   resolve(number);
+// });
+
+// promise
+//   .then(value => {
+//     return value * 2;
+//   })
+//   .then(value => {
+//     console.log(value);
+//   });
+//! TASK7
+// function logString(ms, string) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(string);
+//     }, ms);
+//   });
+// }
+
+// logString(5000, 'abc212').then(result => {
+//   console.log(result);
+// });
+
+//! TASK8
+
+// const promise1 = Promise.resolve(5);
+// const promise2 = Promise.resolve('r32r32');
+// const promise3 = Promise.resolve({ key1: '13e213' });
+
+// const result = Promise.all([promise1, promise2, promise3]);
+
+// result
+//   .then(result => {
+//     console.log(result);
+//   })
+//   .catch(result => {
+//     console.log(result);
+//   });
+
+//! TASK9
+
+// const tasks = [
+//   () => {
+//     return Promise.resolve(4);
+//   },
+//   () => {
+//     return Promise.resolve('hello');
+//   },
+//   () => {
+//     return Promise.resolve({ key: 'OK' });
+//   },
+// ];
+
+// for (const task of tasks) {
+//   task().then(result => {
+//     console.log(result);
+//   });
+// }
+
+//! TASK10
+
+// varian1 work without reject
+
+// const promise1 = Promise.resolve(5);
+// const promise2 = Promise.resolve('r32r32');
+// const promise3 = Promise.resolve({ key1: '13e213' });
+
+// function myAll(array) {
+//   const resultArray = [];
+//   for (const promise of array) {
+//     promise.then(result => {
+//       resultArray.push(result);
+//     });
+//   }
+
+//   return new Promise((resolve, reject) => {
+//     resolve(resultArray);
+//   });
+// }
+
+// myAll([promise1, promise2, promise3]).then(result => console.log(result));
+
+// variant2
+
+// const promise1 = Promise.resolve(5);
+// const promise2 = Promise.reject('r32r32');
+// const promise3 = Promise.resolve({ key1: '13e213' });
+
+// function myAll(array) {
+//   const resolveArray = [];
+//   let rejectValue = null;
+//   for (const promise of array) {
+//     if ((promise.state = 'fulfilled')) {
+//       promise.then(result => {
+//         resolveArray.push(result);
+//       });
+//     } else {
+//       promise.catch(result => {
+//         rejectValue = result;
+//       });
+//     }
+//   }
+
+//   return new Promise((resolve, reject) => {
+//     if (rejectValue === null) {
+//       resolve(resolveArray);
+//     } else {
+//       reject(rejectValue);
+//     }
+//   });
+// }
+
+// myAll([promise1, promise2, promise3])
+//   .then(result => console.log(result))
+//   .catch(result => console.log(result));
+
+// variant 3
+
+// const promise1 = Promise.resolve(5);
+// const promise2 = Promise.reject('r32r32');
+// const promise3 = Promise.resolve({ key1: '13e213' });
+
+// function myAll(array) {
+//   const resolveArray = [];
+//   const rejectArray = [];
+//   for (const promise of array) {
+//     promise
+//       .then(result => {
+//         resolveArray.push(result);
+//       })
+//       .catch(error => {
+//         rejectArray.push(error);
+//       });
+//   }
+
+//   return new Promise((resolve, reject) => {});
+// }
+
+// myAll([promise1, promise2, promise3])
+//   .then(result => console.log(result))
+//   .catch(result => console.log(result));
+
+//!!!!!!!!!! variant4
+
+const promise1 = Promise.resolve(5);
+const promise2 = Promise.resolve('r32r32');
+const promise3 = Promise.resolve({ key1: '13e213' });
+
+function myAll(array) {
+  const resultArray = [];
+  const rejectedArray = [];
+  for (const promise of array) {
+    promise
+      .then(result => {
+        resultArray.push(result);
+      })
+      .catch(result => rejectedArray.push(result));
+  }
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (rejectedArray[0] === undefined) {
+        resolve(resultArray);
+      } else {
+        reject(rejectedArray[0]);
+      }
+    }, 0);
+  });
+}
+
+myAll([promise1, promise2, promise3])
+  .then(result => console.log(result))
+  .catch(result => console.log(result));
